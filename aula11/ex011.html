@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nacionalidade</title>
+    <link rel="stylesheet" href="estilo11/style.css">
+</head>
+<body>
+    <header>
+        <h1>
+            Nacionalidade
+        </h1>
+    </header>
+
+    <main>
+        <p>Digite o país onde você mora: <input type="text" name="pais" id="pais"> <input type="button" value="Verificar" onclick="nacionalidade()"></p>
+
+        <div id="nacional">
+
+        </div>
+    </main>
+
+    <script>
+        function nacionalidade() {
+            var txtpais = document.querySelector('input#pais')
+            var pais = String(txtpais.value)
+            var res = document.querySelector('div#nacional')
+
+            res.innerHTML = `<p>Você mora em: <strong>${pais}</strong>.</p>`
+
+            if (pais == 'Brasil') {
+                res.innerHTML += `<p>Você é <strong>brasileiro</strong>!</p>`
+            } else if (pais == 'brasil') {
+                res.innerHTML += `<p>Você é <strong>brasileiro</strong>!</p>`
+            } else {
+                res.innerHTML += `<p>Você é <strong>estrangeiro</strong>!</p>`
+            }
+        }
+    </script>
+</body>
+</html>
