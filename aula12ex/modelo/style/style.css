@@ -1,5 +1,10 @@
 @charset "UTF-8";
-
+/*
+madrugada: 00101a
+manhã: e2cd9f
+tarde: b9846f
+noite: 22596f
+*/
 body {
     background-color: rgb(70, 142, 236);
     font: normal 20px Arial, Verdana, sans-serif;
