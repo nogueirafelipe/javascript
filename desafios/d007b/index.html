@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor R$ -> US$</title>
+    <link rel="stylesheet" href="../d007b/estilo/style.css">
+</head>
+<body>
+    <header>
+        <h1>
+            Conversor R$ &rarr; US$
+        </h1>
+    </header>
+    <main>
+        <p>
+            Quanto está a cotação do dólar agora? Use ponto ao invés de vírgula. 
+        </p>
+        <p>
+            <input type="number" name="dolar" class="num" id="dolar">
+        </p>
+        <p>
+            Quantos R$ você tem na carteira? Use ponto ao invés de vírgula. 
+        </p>
+        <p>
+            <input type="number" name="real" class="num" id="real">
+        </p>
+        <p>
+            <input type="button" value="Converter" id="btn" onclick="converter()">
+        </p>
+        <div class="txt" id="res">
+            Clique no botão acima para iniciar.
+        </div>
+    </main>
+    <script src="../d007b/script/script.js"></script>
+</body>
+</html>
