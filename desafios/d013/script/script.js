@@ -16,17 +16,17 @@ function verificar() {
                 let sn = Number(snota)
                 let media = (pn + sn) / 2
                 if (media < 3) {
-                    res.innerHTML = `<h2>Situação:</h2>`
-                    res.innerHTML += `<p>A média das notas de ${nome} é ${media.toFixed(1)}</p>`
-                    res.innerHTML += `<p><span style="background-color: #E28783; color: #7F180B;">REPROVADO \u{274C}</span></p>`
+                    res.innerHTML = `<h2>Analisando a situação de ${nome}</h2>`
+                    res.innerHTML += `<p>Com as notas ${pn.toFixed(1)} e ${sn.toFixed(1)}, a média é ${media.toFixed(1)}</p>`
+                    res.innerHTML += `<p>Com média abaixo de 3.0, ${nome} está <span style="background-color: #E28783; color: #7F180B;">REPROVADO \u{274C}</span></p>`
                 } else if (media < 6) {
-                    res.innerHTML = `<h2>Situação:</h2>`
-                    res.innerHTML += `<p>A média das notas de ${nome} é ${media.toFixed(1)}</p>`
-                    res.innerHTML += `<p><span style="background-color: #FFFF4D; color: #808000;">RECUPERAÇÃO \u{270B}</span></p>`
+                    res.innerHTML = `<h2>Analisando a situação de ${nome}</h2>`
+                    res.innerHTML += `<p>Com as notas ${pn.toFixed(1)} e ${sn.toFixed(2)}, a média é ${media.toFixed(1)}</p>`
+                    res.innerHTML += `<p>Com média entre 3.0 e 6.0, ${nome} está em <span style="background-color: #FFFF4D; color: #808000;">RECUPERAÇÃO \u{270B}</span></p>`
                 } else {
-                    res.innerHTML = `<h2>Situação:</h2>`
-                    res.innerHTML += `<p>A média das notas de ${nome} é ${media.toFixed(1)}</p>`
-                    res.innerHTML += `<p><span style="background-color: #A6EB9A; color: #3F852A;">APROVADO \u{2714}</span></p>`
+                    res.innerHTML = `<h2>Analisando a situação de ${nome}</h2>`
+                    res.innerHTML += `<p>Com as notas ${pn.toFixed(1)} e ${sn.toFixed(1)}, a média é ${media.toFixed(1)}</p>`
+                    res.innerHTML += `<p>Com média acima de 6.0, ${nome} está <span style="background-color: #A6EB9A; color: #3F852A;">APROVADO \u{2714}</span></p>`
                 }
             }
         }
