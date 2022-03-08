@@ -43,6 +43,6 @@ function converteBitcoin() {
         let valorRealNum = Number(valorRealtxt.value)
         let valorBitcoin = valorRealNum / 196940.62
 
-        res.innerHTML = `O resultado em bitcoin é: ${valorBitcoin.toLocaleString("en-US", {style: "currency", currency: "BTC"})}`
+        res.innerHTML = `O resultado em bitcoin é: ${valorBitcoin.toFixed(4).toLocaleString("en-US", {style: "currency", currency: "BTC"})}`
     }
 }
