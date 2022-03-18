@@ -3,29 +3,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 /* #00162B
 #134579 */
+
+
 body {
-    /* background-image: linear-gradient(236.85deg, #041832 27.26%, #3468a7 96.03%); */
+    background-image: linear-gradient(236.85deg, #00162B 27.26%, #134579 96.03%);
     font-family: 'Roboto', sans-serif;
-    background-image: url("../imagens/fundo2.png");
+    /* background-image: url("../imagens/fundo2.png"); */
     background-color: black;
-    background-size: auto;
+    /* background-size: auto;
     background-position: center top;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    height: 96vh;
 }
 
 .container {
     background-color: #ecf4ff;
     color: #1c1c1c;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 34px;
     max-width: 800px;
-    border-radius: 10px;
+    border-radius: 20px;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
 }
 
 .perfil {
     display: flex;
-    align-items: center;
 }
 
 .perfil-foto {
@@ -36,7 +43,7 @@ body {
 
 .title-subtitle {
     margin-left: 20px;
-    line-height: 18px;
+    line-height: 28px;
 }
 
 .title-subtitle h1 {
@@ -53,14 +60,35 @@ body {
     max-height: 24px;
 }
 
+.tema button {
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 40px;
+    font-size: 0.9em;
+    font-weight: 400;
+    padding: 5px 10px;
+    align-self: flex-end;
+}
+
+.tema button:active {
+    background-color: #1c1c1c2c;
+    transition: 0.2s;
+}
+
+.tema .temaimg {
+    max-height: 15px;
+    padding-bottom: 0px;
+}
+
 .projetos {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    margin-top: 35px;
+    margin-top: 32px;
     max-width: 800px;
-    background-color: #a250ce7e;
-    border-radius: 10px;
+    /* background-image: linear-gradient(236.85deg, #a250ceec 27.26%, #C4B458 96.03%); */
+    background-image: linear-gradient(236.85deg, #499CFE 27.49%, #9CC8FC 83.19%);
+    border-radius: 20px;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.438);
 }
 
@@ -91,3 +119,23 @@ ul a:visited {
     color: #1c1c1c;
 }
 
+.dark {
+    background-image: linear-gradient(236.85deg, #375b86 27.26%, #6b87a9 96.03%);
+}
+
+.dark .container {
+    background-color: #333439;
+}
+
+.dark .title-subtitle {
+    color: #ecf4ff;
+}
+
+.dark .tema button {
+    border: 1px solid #ecf4ff;
+    color: #ecf4ff;
+}
+
+.dark .tema button:active {
+    background-color: #ecf4ff33;
+}
