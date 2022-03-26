@@ -11,4 +11,5 @@ function teste(fullname, flag = "") {
 console.log(teste("João da Silva", "firstname"))
 console.log(teste("João da Silva", "lastname"))
 console.log(teste("João"))
-//Não consegui resolver tudo
+
+//NÃO CONSEGUI RESOLVER TUDO!!!
