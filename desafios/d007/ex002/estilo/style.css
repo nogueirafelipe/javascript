@@ -8,12 +8,16 @@
 
 * {
     --cor01: rgba(118, 118, 118, 0.514);
-    --cor02: rgba(59, 59, 59, 0.164);
+    --cor02: rgba(168, 168, 168, 0.164);
     --cor03: rgba(239, 239, 239, 0.4);
 }
 
 body {
-    background-color: #8795ff;
+    background-image: url("../imagens/money.jpg");
+    background-color: #314659;
+    background-size: cover;
+    background-position: left top;
+    background-repeat: repeat-y;
 }
 
 .container {
@@ -21,14 +25,15 @@ body {
     max-width: 800px;
     height: 500px;
     text-align: center;
-    background-color: white;
+    /* background-color: white;
     border-radius: 20px;
-    box-shadow: 8px 8px 20px 10px rgba(0, 0, 0, 0.123);
+    box-shadow: 8px 8px 20px 10px rgba(0, 0, 0, 0.123); */
 }
 
 header {
     padding: 10px;
     font-family: 'Montserrat', sans-serif;
+    color: #f7f5f5;
 }
 
 main {
@@ -40,7 +45,7 @@ main {
     font-size: 1.2em;
     padding: 5px 15px;
     margin-left: 10px;
-    border: 1px solid var(--cor01);
+    border: none;
     border-radius: 8px;
     cursor: pointer;
 }
@@ -50,18 +55,21 @@ main {
 }
 
 .btn:hover {
-    background-color: var(--cor02);
+    background-color: var(--cor03);
 }
 
 .btn:active {
-    background-color: var(--cor03);
+    background-color: var(--cor02);
 }
 
 #txtInput {
     line-height: 25px;
     font-size: 1.3em;
+    font-weight: 500;
+    color: #f7f5f5;
 }
 
 h2 {
     line-height: 25px;
+    color: #f7f5f5;
 }
