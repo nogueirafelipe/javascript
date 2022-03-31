@@ -9,8 +9,8 @@ function iniciar() {
 }
 
 function enviarProduto() {
-    let produto = document.querySelector("input#produto").value
-    elementoInput.innerHTML = `<p id="txtInput">Qual é o preço de ${produto}? <input type="number" id="preco" required> <button onclick="calcularDesconto(${produto})">Calcular Desconto</button></p>`
+    var produto = document.querySelector("input#produto").value
+    elementoInput.innerHTML += `<p id="txtInput">Qual é o preço de ${produto}? <input type="number" id="preco" required> <button onclick="calcularDesconto(${produto})">Calcular Desconto</button></p>`
 }
 
 function calcularDesconto(produto) {
@@ -18,7 +18,7 @@ function calcularDesconto(produto) {
     let desconto = preco * 10 / 100
     let valorFinal = preco - desconto
 
-    elementoInput.innerHTML = ""
+    // elementoInput.innerHTML = ""
     res.innerHTML = `<h2>Calculando desconto de 10% para ${produto}</h2>`
     res.innerHTML += `<p id="txtInput">O preço original era ${preco.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})}.</p>`
     res.innerHTML += `<p id="txtInput">Você acaba de ganhar ${desconto.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})} (-10%).</p>`
