@@ -169,15 +169,76 @@ Em JavaScript, parâmetros padrões de funções são undefined. No entanto, em 
 
 No passado, a estratégia geral para definir padrões era testar os valores de parâmetro no corpo da função e atribuir um valor se eles fossem undefined. Se, no exemplo a seguir, nenhum valor é fornecido para b na chamada, seu valor seria undefined ao avaliar a*b e a chamada para multiplicar retornaria NaN. No entanto, isso é pego com a segunda linha neste exemplo:
 */
-function multiplicar(a, b) {
-    b = typeof b !== "undefined"? b: 1
-    return a*b
-}
-console.log(multiplicar(50))    //Retorna 50
+// function multiplicar(a, b) {
+//     b = typeof b !== "undefined"? b: 1
+//     return a*b
+// }
+// console.log(multiplicar(50))    //Retorna 50
+// /*
+// Com parâmetros padrão, a verificação no corpo da função não é mais necessária. Agora você pode simplesmente colocar 1 como valor padrão para b no campo de declaração de parâmetros:
+// */
+// function vezes(a, b=1) {
+//     return a*b
+// }
+// console.log(vezes(50))  //Retorna 50
+
 /*
-Com parâmetros padrão, a verificação no corpo da função não é mais necessária. Agora você pode simplesmente colocar 1 como valor padrão para b no campo de declaração de parâmetros:
+REST
+Permite representar um número indefinido de argumentos como um ARRAY. É PRECISO USAR RETICÊNCIAS
 */
-function vezes(a, b=1) {
-    return a*b
-}
-console.log(vezes(50))  //Retorna 50
+// function multiplicar(valor1, ...outros) {   //Parâmetro rest = ...outros
+//     return outros.map(x => valor1 * x)
+// }
+// let arr = multiplicar(2, 1, 2, 3)
+// console.log(arr)
+
+/*
+ARROW FUNCTIONS
+Uma expressão função de seta (anteriormente conhecida como função de seta gorda) tem uma sintaxe pequena em comparação com a expressão de função e lexicalmente vincula o valor this. Funções de seta são sempre anônimas. 
+
+Funções curtas:
+Em alguns padrões funcionais, funções curtas são bem-vindas. Uma comparação:
+*/
+// let a = ["Hidrogênio", "Hélio", "Lítio", "Berílio"]
+
+// let a2 = a.map(function(s){return s.length})
+//     console.log(a2)
+
+//     let a3 = a.map(s => s.length)
+//     console.log(a3)
+
+//As variáveis a2 e a3 retornam o mesmo resultado, mas a3 é mais curta.
+
+/*
+Léxico this:
+Até as arrow functions, cada nova função definia seu próprio valor this. Isso pode ser irritante com um estilo de programação orientada a objetos. Exemplo:
+*/
+// function pessoa() {  //O construtor pessoa() define 'this' como sendo ele
+//     this.idade = 0
+//     setInterval(function crescer() {     //No modo não estrito, a função crescer define 'this' como o objeto global, o 
+//         this.idade++                     //que é diferente do 'this' definido pelo construtor pessoa()
+//     }, 1000)
+// }
+// let p = new pessoa()
+// console.log(p)
+
+//No ECMAScript 3/5, este problema foi resolvido atribuindo o valor em this a uma variável que poderia ser fechada:
+// function pessoa() {
+//     let self = this
+//     self.idade = 0
+//     setInterval(function crescer() {
+//         self.idade++
+//     }, 1000)
+// }
+// console.log(pessoa())
+
+//Como alternativa, uma função vinculada poderia ser criada para que o valor da propriedade this seja passado para a função crescer().
+// Arrow functions capturam o valor this do contexto delimitado, então o código a seguir funciona conforme o esperado.
+// function pessoa() {
+//     this.idade = 0
+//     setInterval(() => {
+//         this.idade++    //Propriedade 'this' refere ao objeto pessoa
+//     }, 1000)
+// }
+// let p = new pessoa()
+// console.log(p)
