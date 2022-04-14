@@ -242,3 +242,15 @@ Até as arrow functions, cada nova função definia seu próprio valor this. Iss
 // }
 // let p = new pessoa()
 // console.log(p)
+const nome = (n) => console.log(`O nome é: ${n}`)
+nome("Felipe")
+nome("Bruno")
+nome("Lucas")
+let nomeDoBancoDeDados = "João"
+nome(nomeDoBancoDeDados)
+//RETURN PROPORCIONA RECEBER VALORES DE VOLTA E É POSSÍVEL GUARDAR ESSE VALOR EM UMA NOVA VARIÁVEL!
+function soma(a, b) {
+    return a + b
+}
+let somar = soma(2, 5)
+console.log(somar)
