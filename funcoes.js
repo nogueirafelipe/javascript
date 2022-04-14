@@ -242,15 +242,29 @@ Até as arrow functions, cada nova função definia seu próprio valor this. Iss
 // }
 // let p = new pessoa()
 // console.log(p)
-const nome = (n) => console.log(`O nome é: ${n}`)
-nome("Felipe")
-nome("Bruno")
-nome("Lucas")
-let nomeDoBancoDeDados = "João"
-nome(nomeDoBancoDeDados)
+// const nome = n => console.log(`O nome é: ${n}`)
+// nome("Felipe")
+// nome("Bruno")
+// nome("Lucas")
+// let nomeDoBancoDeDados = "João"
+// nome(nomeDoBancoDeDados)
 //RETURN PROPORCIONA RECEBER VALORES DE VOLTA E É POSSÍVEL GUARDAR ESSE VALOR EM UMA NOVA VARIÁVEL!
-function soma(a, b) {
-    return a + b
+// function soma(a, b) {
+//     return a + b
+// }
+// let somar = soma(2, 5)
+// console.log(somar)
+
+/*
+CALLBACKS
+São funções que são passadas como parâmetros de outra função e executadas dentro dela (geralmente no fim do código ou como uma estratégia para inserir uma customização ou uma transformação do valor final).
+*/
+function somaCalback(a, b, fnCallback) {
+    return fnCallback(a+b)
 }
-let somar = soma(2, 5)
-console.log(somar)
+ let multiplica = total => total * 2
+ console.log(somaCalback(10, 3, multiplica))    //Nesse caso, a função foi guardada em uma variável
+
+ console.log(somaCalback(10, 3, function(total){    //Nesse caso, a função foi escrita diretamente no console.log
+     return total * 2
+ }))
