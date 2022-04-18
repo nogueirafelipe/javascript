@@ -100,55 +100,170 @@ Permite armazenar uma coleção de pares: chaves e valores
 // console.log(usuario5)
 
 //Getters e Setters
-let usuarios = [
-    {
-        nome: 'Felipe',
-        idade: 26
-    },
-    {
-        nome: 'João',
-        idade: 30
-    },
-    {
-        nome: 'Maria',
-        idade: 21
-    }
-]
-//console.log(usuarios)
+// let usuarios = [
+//     {
+//         nome: 'Felipe',
+//         idade: 26
+//     },
+//     {
+//         nome: 'João',
+//         idade: 30
+//     },
+//     {
+//         nome: 'Maria',
+//         idade: 21
+//     }
+// ]
+// //console.log(usuarios)
 
-let usuario6 = {
-    posicao: 0,
-    get atual() {
-        return usuarios[this.posicao]
-    },
-    set atual(posicao) {
-        this.posicao = posicao
-    },
-    proximo() {
-        ++this.posicao
-    },
-    anterior() {
-        --this.posicao
-    }
+// let usuario6 = {
+//     posicao: 0,
+//     get atual() {
+//         return usuarios[this.posicao]
+//     },
+//     set atual(posicao) {
+//         this.posicao = posicao
+//     },
+//     proximo() {
+//         ++this.posicao
+//     },
+//     anterior() {
+//         --this.posicao
+//     }
+// }
+
+// console.log(usuario6.atual)     //'atual' não está sendo chamado como uma função, para fazer isso (a função sendo chamada
+// usuario6.proximo()              //como propriedade e só retornando um valor) é necessário usar a palavra reservada 'get'
+//                                 //antes da função 'atual()' --> get atual()
+// console.log(usuario6.atual)
+// usuario6.proximo()
+
+// console.log(usuario6.atual)
+// console.log(usuario6.atual)
+// usuario6.anterior()
+
+// console.log(usuario6.atual)
+// usuario6.anterior()
+
+// console.log(usuario6.atual)
+// //
+// usuario6.atual = 1              //Para conseguir definir manualmente qual é a posição, é presico usar a palavra 
+// console.log(usuario6.atual)     //reservada 'set'
+
+// usuario6.atual = 0
+// console.log(usuario6.atual)
+
+/*
+DESTRUCTING
+*/
+// let novoUsuario3 = {
+//     nome: "Felipe",
+//     idade: 26,
+//     pais: "Brasil",
+//     estado: "SP"
+// }
+// let {pais} = novoUsuario3
+// console.log(pais)           //Entre chaves eu digo o nome da chave/propriedade que eu quero e a variável será criada com 
+//                             //o valor contido na chave
+//                             //É possível extrair mais de uma chave em uma única variável
+// let {nome, idade} = novoUsuario3
+// console.log(nome, idade)
+// //var {nome da(s) chave(s)} = nome do objeto
+
+// //Para fins de comparação, a maneira comum seria criar uma vriável para cada chave/propriedade:
+// let identity = novoUsuario3.nome
+// let age = novoUsuario3.idade
+// let country = novoUsuario3.pais
+// console.log(identity)
+// console.log(age)
+// console.log(country)
+
+// //Ao usar destructing, é possível dar outro nome para a variável além do nome da chave extraída, basta colocar dois pontos depois do nome da chave e escrever o novo nome da variável:
+// let {estado: state} = novoUsuario3
+// console.log(state)
+
+//É possível extrair chaves/propriedades de objetos aninhados, basta seguir a ordem do objeto:
+// let novoUsuario4 = {
+//     nome: {
+//         primeiro: "Felipe",
+//     }
+// }
+
+// //Jeito mais comum
+// // let primeiro = novoUsuario4.nome.primeiro
+// // console.log(primeiro)
+
+// //Com destructing:
+// let {nome: {primeiro}} = novoUsuario4
+// console.log(primeiro)
+
+// //Destructing com valor padrão (é igual ao default em function):
+// let {nome: {ultimo = "Nogueira"}} = novoUsuario4        //Apesar de não existir a propriedade "ultimo" no objeto, vai
+// console.log(ultimo)                                     //imprimir "Nogueira"
+
+//Destructing como parâmetro de uma função:
+// function imprimeUsuario({nome, idade, cidade}) {
+//     console.log(nome)
+//     console.log(idade)
+//     console.log(cidade)
+// }
+
+// let usuarioFunction = {
+//     nome: "Felipe",
+//     idade: 26,
+//     cidade: "São Paulo",
+// }
+// imprimeUsuario(usuarioFunction)
+
+//Somando os dois exemplos anteriores, destructing com valor padrão como parâmetro de uma função:
+// function mostrarUsuario({nome, idade, cidade, pais = "Brasil"}) {
+//     console.log(nome)
+//     console.log(idade)
+//     console.log(cidade)
+//     console.log(pais)
+// }
+// let usuarioFunction2 = {
+//     nome: "Felipe",
+//     idade: 26,
+//     cidade: "São Paulo"
+// }
+// mostrarUsuario(usuarioFunction2)
+
+// /*
+// Métodos Object.keys() e Object.values():
+// */
+// console.log(Object.keys(usuarioFunction2))      //O parâmetro é o próprio objeto
+// console.log(Object.values(usuarioFunction2))
+
+/*
+Iterando objetos com for:
+*/
+let usuarioFunction3 = {
+    nome: "Felipe",
+    idade: 26,
+    cidade: "São Paulo",
+    pais: "Brasil"
+}
+let props = Object.keys(usuarioFunction3)
+
+for (let i = 0; i < props.length; i++) {
+    console.log(props[i])                       //Imprime as chaves
+    console.log(usuarioFunction3[props[i]])     //Imprime os valores de cada chave
 }
 
-console.log(usuario6.atual)     //'atual' não está sendo chamado como uma função, para fazer isso (a função sendo chamada
-usuario6.proximo()              //como propriedade e só retornando um valor) é necessário usar a palavra reservada 'get'
-                                //antes da função 'atual()' --> get atual()
-console.log(usuario6.atual)
-usuario6.proximo()
+//Iterando com for of:
+for (let prop of props) {
+    console.log(usuarioFunction3[prop])         //Imprime os valores de cada chave
+}
 
-console.log(usuario6.atual)
-console.log(usuario6.atual)
-usuario6.anterior()
+//Iterando com for in (é o que vale mais a pena, é mais rápido):
+// for (let x in usuarioFunction3) {
+//     console.log(x, usuarioFunction3[x])
+// }
 
-console.log(usuario6.atual)
-usuario6.anterior()
-
-console.log(usuario6.atual)
-//
-usuario6.atual = 1              //Para conseguir definir manualmente qual é a posição, é presico usar a palavra 
-console.log(usuario6.atual)     //reservada 'set'
-
-usuario6.atual = 0
-console.log(usuario6.atual)
+//Método hasOwnProperty() - Serve para iterar apenas as propriedades que você mesmo definiu, não vai imprimir propriedades que venham por herança de alguma biblioteca (ou por qualquer outro imprevisto)
+for (let x in usuarioFunction3) {
+    if(usuarioFunction3.hasOwnProperty(x)) {    //Se a propriedade "x" foi definida dentro do objeto, e não herdada,
+        console.log(x, usuarioFunction3[x])     //ele imprimirá o que está no console.log()
+    }
+}
