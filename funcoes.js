@@ -259,12 +259,110 @@ Até as arrow functions, cada nova função definia seu próprio valor this. Iss
 CALLBACKS
 São funções que são passadas como parâmetros de outra função e executadas dentro dela (geralmente no fim do código ou como uma estratégia para inserir uma customização ou uma transformação do valor final).
 */
-function somaCalback(a, b, fnCallback) {
-    return fnCallback(a+b)
-}
- let multiplica = total => total * 2
- console.log(somaCalback(10, 3, multiplica))    //Nesse caso, a função foi guardada em uma variável
+// function somaCalback(a, b, fnCallback) {
+//     return fnCallback(a+b)
+// }
+//  let multiplica = total => total * 2
+//  console.log(somaCalback(10, 3, multiplica))    //Nesse caso, a função foi guardada em uma variável
 
- console.log(somaCalback(10, 3, function(total){    //Nesse caso, a função foi escrita diretamente no console.log
-     return total * 2
- }))
+//  console.log(somaCalback(10, 3, function(total){    //Nesse caso, a função foi escrita diretamente no console.log
+//      return total * 2
+//  }))
+
+/*
+THIS
+Dependendo de como a função é chamada, ele tem um valor diferente, isso é chamado escopo dinâmico
+Se this for invocado no escopo global terá o valor "window"
+*/
+// function usuario() {
+//     this.nome = "Felipe"
+//     this.idade = 26
+//     this.soma = function(a, b) {return a+b}
+// }
+// // usuario()           //Nesse caso, this ainda tem "window" como valor, porque a função foi invicada de uma forma que não 
+//                     //altera o valor de this
+//                     //Como o valor não foi alterado, ele pegou o valor de this no escopo acima da função, o escopo global
+
+//Uma maneira de alterar o valor de this é invocar a função utilizando o operador new
+// console.log(new usuario())       //Antes this valia "window", agora vale "usuario" (a chave representa um objeto, no 
+//                                 //caso, uma função)
+//                                 //Quando uma função é invocada com o new, o this passa a valer um objeto daquela função, é como se this fosse um objeto representando aquela função
+// let u = new usuario()           //Para acessar as propriedade de this, foi preciso guardar a chamada da função com o 
+// console.log(u.nome)             //operador new em uma variável
+// console.log(u.idade)
+// console.log(u.soma(1, 4))
+
+//Outra forma de alterar o valor de this é com o método call
+// function personagem(a, b, c) {
+//     console.log(this)
+//     console.log(a + b + c)
+// }
+
+// let personagemThis = {
+//     nome: "Felipe"
+// }
+
+// personagem.call(personagemThis, 1, 2, 3)    //O primeiro parâmetro vai definir o valor de this para essa função, nesse 
+                                            //caso será o objeto "personagemThis", e a partir do segundo parâmetro
+                                            //serão os parâmetros que a função vai receber
+
+//Outra forma de alterar o this é com o método apply
+// personagem.apply(personagemThis, [1, 2, 3])             //A única diferença para o call é a forma de passar os parâmetros
+                                                        //da função.
+                                                        //No apply, o primeiro parâmetro é o valor de this e os parâmetros da função são passados em um array
+
+//Método bind
+//let char = personagem.bind(personagemThis, 4, 4)                
+                                                        //O primeiro parâmetro do bind também é quem vai ser o this
+                                                        //daquela função.
+                                                        //A diferença é que ao usar bind a função não será invocada, ele
+                                                        //retorna uma nova função, atualizada com o novo valor de this e
+                                                        //com os parâmetros da função que pode ser armazenada em uma 
+                                                        //variável
+//char(4)                                               //É possível não passar todos os parâmetros no bind e terminar 
+                                                        //de passá-los na chamada da função
+
+
+/*
+ARROW FUNCTIONS
+Não tem this!!
+Se ela estiver dentro de um contexto que já tenha this, é possível utilizar o this dentro dela
+*/
+// let soma = (a, b) => {
+//     return a + b
+// }
+// console.log(soma(1, 2))
+//Existe uma forma mais curta. Se a função for retornar algo imediatamente não é necessário usar as chaves {}
+// let adicao = (a, b) => a + b
+// console.log(adicao(1, 2))
+//Se, por questão de legibilidade, você quiser jogar "a + b" para a linha de baixo, é possível proteger o bloco usando parênteses ()
+// let subtrair = (a, b) => (
+//     a - b
+// )
+// console.log(subtrair(2, 1))
+//Isso é ainda mais necessário se você for retornar um objeto, porque o javascript vai entender que as chaves estão abrindo e fechando a função, e não o objeto
+// let retornaUsuario = () => (
+//     {
+//         nome: "Felipe",
+//         idade: 26
+//     }
+// )
+// console.log(retornaUsuario())
+
+//Arrow functions com 1 parâmetro
+//É possível omitir os parênteses dos parâmteros
+// let retornaPessoa = cidade => (
+//     {
+//         nome: "Maria",
+//         idade: 30,
+//         cidade
+//     }
+// )
+// console.log(retornaPessoa("São Paulo"))
+
+//Arrow functions e this
+let imprimeThis = () => {
+    console.log(this)
+}
+imprimeThis.call({nome: "Felipe"})  //Vai continuar imprimindo "window"
+//Não é possível passar um contexto de this para dentro de uma arrow function, se ela estiver em um contexto onde já existe this, ela vai herdar esse this
